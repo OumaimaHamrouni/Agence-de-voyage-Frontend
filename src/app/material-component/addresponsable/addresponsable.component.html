@@ -1,0 +1,40 @@
+<mat-card>
+<mat-card-content>
+<mat-chip-list class="mat-chip-list-stacked" >
+    
+</mat-chip-list>
+
+
+<mat-accordion class="example-headers-align">
+    <mat-expansion-panel  >
+        <mat-expansion-panel-header>
+            <mat-panel-title> Ajouter Responsable</mat-panel-title>
+            <mat-panel-description> Remplir Les champs
+                <mat-icon>account_circle</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field> <input matInput formControlName="nom" id="nom" name="nom" placeholder="Nom" required></mat-form-field>
+        <mat-form-field> <input matInput name="prenom" formControlName="prenom" id="prenom" placeholder="Prenom" required></mat-form-field>
+        <mat-form-field> <input matInput name="adress" formControlName="adress" id="adress"  placeholder="Adress" required></mat-form-field>
+        <mat-form-field> <input matInput name="userName" formControlName="userName" id="username" placeholder="Username" required></mat-form-field>
+        <mat-form-field> <input matInput name="email" placeholder="Email" formControlName="email" id="email" required></mat-form-field>
+        <mat-form-field> <input matInput  type="password" name="password" formControlName="password" id="password" placeholder="Mot de passe" required></mat-form-field>
+
+        <mat-action-row>
+            <button mat-button color="primary" id="endF" type="submit">Ajouter</button>
+        </mat-action-row>   
+        <div class="alert alert-warning" *ngIf="submitted && !isRegistered">
+            Signup failed- {{ errorMessage }}
+          </div>
+       
+          <div class="alert alert-success" *ngIf="isRegistered">
+            Your registration is successful!
+          </div>
+        </form>
+    </mat-expansion-panel>
+</mat-accordion>
+</mat-card-content>
+</mat-card>
+ 

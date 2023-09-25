@@ -1,0 +1,122 @@
+<div fxFlex="100">
+
+    <div fxFlex.gt-sm="60%" >
+        <mat-card>
+                <mat-card-content>
+                 <mat-list>
+    
+                        <mat-card class="oh text-center little-profile">
+                            <img mat-card-image src={{annonce.image}} alt={{annonce.image}}>
+                            <mat-card-content>
+                               
+                                <h3 class="m-b-0">{{annonce.titre}}</h3>
+                             
+                                <div fxLayout="row" fxLayoutWrap="wrap" class="m-t-30">
+                                    <div fxFlex.gt-sm="50%" fxFlex.gt-xs="33.33%" fxFlex="100">
+                                        <h4 class="m-0 font-light">Déstination</h4>
+                                        <small>{{annonce.destination}}</small>
+                                    </div>
+                                    <div fxFlex.gt-sm="50%" fxFlex.gt-xs="33.33%" fxFlex="100">
+                                        <h4 class="m-0 font-light">Prix</h4>
+                                        <small>{{annonce.prix}}  DT</small>
+                                    </div>
+                                </div>
+
+                                <div fxLayout="row" fxLayoutWrap="wrap" class="m-t-30">
+                                    <div fxFlex.gt-sm="50%" fxFlex.gt-xs="33.33%" fxFlex="100">
+                                        <h4 class="m-0 font-light">Date début</h4>
+                                        <small>{{ datedebut }}</small>
+                                    </div>
+                                    <div fxFlex.gt-sm="50%" fxFlex.gt-xs="33.33%" fxFlex="100">
+                                        <h4 class="m-0 font-light">Date fin</h4>
+                                        <small>{{ datefin }}</small>
+                                    </div>
+                                </div>
+                                </mat-card-content>
+
+                                  <p>Description: {{annonce.description}}
+                                  </p>
+
+
+                        
+                        </mat-card>
+    
+                    </mat-list>    
+                </mat-card-content>    
+                
+                <mat-card-content>
+                    <div class="d-flex flex-wrap">
+                            <mat-card>
+                                
+    <mat-expansion-panel hideToggle="true" *ngFor="let programme of programmes ">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Jour {{programme.jour}}:{{programme.titre}} </mat-panel-title>
+  
+            </mat-expansion-panel-header>
+        <mat-panel-description>
+                                <img mat-card-image src={{programme.image}} alt={{programme.image}}>
+                            </mat-panel-description>
+                        <mat-panel-description>
+                            <p>{{programme.description}}</p>
+                
+                        </mat-panel-description>
+                        <button mat-raised-button color="warn" (click)="(deleteprogramme(programme.id))">Supprimer</button>
+                    </mat-expansion-panel>
+                    
+                        </mat-card>
+                         </div>
+                </mat-card-content>
+            <mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="accent"  (click)="(retourlisteannonce())">Retour à la liste</button>
+                    <button mat-raised-button color="primary"(click)="(modifier(annonce))">Modifier</button>
+                    <button mat-raised-button color="warn" (click)="(supprimerAnnonce(programmes,annonce))">Supprimer</button>
+                </mat-card-actions>
+                   </mat-card-content>
+        </mat-card>
+    </div>
+    
+    <div fxFlex.gt-sm="40%" >
+<mat-card>
+    <mat-card-content>
+        <div class="d-flex flex-wrap">
+                <h1>Forfait</h1>
+             </div>
+    </mat-card-content>
+    <mat-card-content>
+        <div class  >
+                <mat-card-title>Inclut</mat-card-title>
+
+                <mat-card>
+                <mat-card-content>
+                <p>  {{ annonce?.forfait?.inclut }} </p>
+               </mat-card-content>
+            </mat-card>
+
+             </div>
+    </mat-card-content>
+    <mat-card-content>
+        <div class>
+                <mat-card-title>Non Inclut</mat-card-title>
+
+                <mat-card>
+                    <mat-card-content>
+                    <p>{{ annonce?.forfait?.noninclut }} </p>
+                    </mat-card-content>
+                </mat-card>
+
+             </div>
+    </mat-card-content>
+
+    
+
+
+</mat-card>
+</div>
+
+    
+    </div>
+
+
+    
+

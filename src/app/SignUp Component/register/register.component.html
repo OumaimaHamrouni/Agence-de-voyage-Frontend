@@ -1,0 +1,66 @@
+<!--<div class="register-photo">
+  <div class="form-container">
+      <div class="image-holder"></div>
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <h2 class="text-center"><strong>Créer</strong> un compte </h2>
+
+            <div class="form-group"><input class="form-control" type="text" id="userName"
+            formControlName="userName" placeholder="User Name"></div>
+
+          <div class="form-group"><input class="form-control" type="text"    id="nom"
+            formControlName="nom"name="nom" placeholder="Nom "></div>
+
+
+          <div class="form-group"><input class="form-control" type="text" name="prenom" id="prenom"
+            formControlName="prenom" placeholder="Prénom "></div>
+
+<div class="form-group"><input class="form-control" type="text" name="adress" id="adress"
+            formControlName="adress" placeholder="Adress "></div>
+
+
+
+          <div class="form-group"><input class="form-control" type="email" name="email" id="email"
+            formControlName="email" placeholder="Email "></div>
+
+
+          <div class="form-group"><input class="form-control" type="password" name="password" id="password"
+            formControlName="password" placeholder="Mot de passe"></div>
+         
+          <div class="form-group">
+              <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox"> J'accepte les termes de la licence.</label></div>
+          </div>
+          <div class="form-group"><button type="submit" class="btn btn-primary btn-block">Sign Up</button></div><a class="already" href="#">Avez vous déjà un compte? Login.</a>
+      </form>
+  </div>
+</div>-->
+
+
+<div class="register-photo">
+  <div class="form-container">  
+      <div class="image-holder"></div>
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <h2 class="text-center"><strong>Créer</strong> un compte </h2>
+          <div class="form-group"><input class="form-control" type="text" name="nom"  id="nom" formControlName="nom"placeholder="Nom "></div>
+          <div class="form-group"><input class="form-control" type="text" name="prenom" name="prenom"  formControlName="prenom" id="prenom" placeholder="Prénom "></div>
+          <div class="form-group"><input class="form-control" type="text" name="adress" name="adress"  formControlName="adress" id="adress" placeholder="adress "></div>
+
+          <div class="form-group"><input class="form-control" type="text" name="userName" id="userName" formControlName="userName" placeholder="User Name"></div>
+          <div class="form-group"><input class="form-control" type="email" name="email" id="email" formControlName="email" placeholder="Email "></div>
+          <div class="form-group"><input class="form-control" type="password" name="password" id="password" formControlName="password" placeholder="Mot de passe"></div>
+         
+          <div class="form-group">
+          </div>
+          <div class="form-group"><button type ="submit"class="btn btn-primary btn-block">Sign Up</button></div><a class="already" (click)="(login())">Avez vous déjà un compte? Login.</a>
+          <div class="alert alert-warning" *ngIf="submitted && !isRegistered">
+            Signup failed- {{ errorMessage }}
+          </div>
+       
+          <div class="alert alert-success" *ngIf="isRegistered">
+            Your registration is successful!
+          </div>
+       
+       
+        </form> 
+       
+  </div>
+</div>

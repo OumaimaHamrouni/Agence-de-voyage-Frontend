@@ -1,0 +1,33 @@
+
+
+
+
+<mat-card>
+    <div class="p-20 bg-info position-relative">
+        <h4 class="card-title text-white m-0">List des responsables </h4>
+        <button mat-mini-fab color="accent" (click)="(addresponsable())"class="add-contact">+</button>
+    </div>
+    <div class="message-box contact-box p-20">
+    <div class="message-widget contact-widget">
+    <div  *ngFor="let user of users "  >
+        <div *ngIf=" user.roles[0].roleName == 'ROLE_RESPONSABLE' " >
+
+        <div class="user-img">
+            <h1>{{user.prenom}} {{user.nom}}    </h1>
+            <span class="profile-status pull-right "></span>
+        </div>
+      
+        <div class="mail-contnet">
+           
+
+            <h5><span >Nom :</span>{{user.nom}}   </h5>
+            <h5><span >Prenom :</span>{{user.prenom}}   </h5>
+            <h5><span >Adress :</span>{{user.adress}}   </h5>
+            <h5><span >Email :</span>{{user.email}}   </h5>
+        </div>
+       
+      </div>
+    </div>
+</div>
+</div>
+</mat-card>

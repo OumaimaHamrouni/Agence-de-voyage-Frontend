@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+    </head>
+<body><div class="container-fluid px-4 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="card border-0">
+            <div class="row set-p justify-content-center">
+                <div>
+                
+                    <img mat-card-image src={{data.image}} alt={{data.image}}/>
+               
+                </div>
+                <span class="fa fa-angle-left" id="left"></span>
+                <span class="fa fa-angle-right" id="right"></span>
+                <div class="col-12">
+                    <div class="row px-3 mt-4 mb-3">
+                        <p class="rating mb-0 px-2 mr-3"><strong></strong></p>
+                        <p class="text-primary mb-0 mr-2 grade"><strong>{{data.titre}}</strong></p>
+                        <p class="text-secondary mb-0 mr-2">&middot;</p>
+                        <p class="text-secondary mb-0"></p>
+                    </div>
+                    <div class="row px-3">
+                        <h3 class="font-weight-bold">{{data.destination}}</h3>
+                    </div>
+                    <div class="row px-3 mb-2 mt-2">
+                        <span class="fa fa-star text-warning mr-1"></span>
+                        <span class="fa fa-star text-warning mr-1"></span>
+                        <span class="fa fa-star text-warning mr-1"></span>
+                        <span class="fa fa-star text-warning mr-1"></span>
+                    </div>
+                    <div class="row px-3">
+                        <h5 class="mb-1">date départ &middot; {{ datedebut }} &middot; </h5>
+                  </div>
+                  <div class="row px-3">
+                        <h5 class="mb-1">date fin &middot; {{ datedebut }} &middot; </h5>
+                    </div>
+                    <div class="row px-3">
+                        <p class="mb-4">{{data.description}} &middot; </p>
+                    </div>
+                    <div class="line"></div>
+                    <div class="row px-3 mt-4">
+                        <h5 class="text-secondary mb-1">Prix</h5>
+                    </div>
+                    <div class="row px-3 mb-4">
+                        <h2 class="text-success mb-1 font-weight-bold">{{data.prix}} DT<span class="ml-2 text-muted text-sm"></span></h2>
+                    </div>
+                    <div  style="margin-left: 300px;">
+                    <button type="button" class="btn btn-outline-success"(click)="confirmer()">Confirmer</button>
+                    <button type="button" class="btn btn-outline-danger" (click)="annuler()">Annuler</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+
+$('#left').click(function(){
+    var tmp = $(".active");
+    $(tmp).removeClass("active");
+    if($(tmp).is(':first-child')) {
+        $("#last").addClass("active");
+    }
+    else {
+        $(tmp).prev().addClass("active");
+    }
+});
+
+$('#right').click(function(){
+    var tmp = $(".active");
+    $(tmp).removeClass("active");
+    if($(tmp).is(':last-child')) {
+        $("#first").addClass("active");
+    }
+    else {
+        $(tmp).next().addClass("active");
+    }
+});
+
+});
+</script>
+
+</body>
+</html>

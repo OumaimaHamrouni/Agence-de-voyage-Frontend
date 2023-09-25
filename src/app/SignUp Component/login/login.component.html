@@ -1,0 +1,71 @@
+<!--<mat-card>
+    <div _ngcontent-irv-c356="" class="p-20 bg-info position-relative">
+        <h4 _ngcontent-irv-c356="" class="card-title text-white m-0 list-inline text-center"><b>S'identifier</b></h4>
+        
+      </div>
+      
+    <mat-card-content>
+
+        <div class="pro-img text-center">
+            <img src="assets/images/users/login.png" width="100" alt="user" class="img-circle">
+        </div>
+    
+
+
+        <br>
+
+        <mat-form-field>
+            <input matInput placeholder="Email" name="Email"   required>
+ 
+         </mat-form-field>
+
+         <br>
+         <mat-form-field>
+            <input matInput placeholder="Mot de passe" name="Password"   required>
+         </mat-form-field>
+         <br><br><br>
+         
+         <div class="text-center">
+         <button mat-raised-button  color="primary">Connecter</button>
+         </div>
+    </mat-card-content>
+
+    
+   <br>
+  
+</mat-card>
+-->
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="assets/images/users/login.png" width="30" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <input type="text" id="login" class="fadeIn second" formControlName="userName" placeholder="User Name">
+    
+      <input type="password" id="password" class="fadeIn se" formControlName="password" placeholder="password">
+      <input type="submit" [disabled]="loginForm.invalid" class="fadeIn fourth" value="Log In">
+      <div class="alert alert-warning" *ngIf="submitted && isLoginFailed">
+        Login failed- {{ errorMessage }}
+      </div>
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" (click)="(singup())">singup</a>
+    </div>
+
+  </div>
+</div>

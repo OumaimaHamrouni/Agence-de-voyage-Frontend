@@ -1,0 +1,145 @@
+<!-- ============================================================== -->
+<!-- Basic-->
+<!-- ============================================================== -->
+<!-- 
+<mat-card>
+    <mat-card-content>
+        <mat-card-title>Basic Expansion</mat-card-title>
+        <mat-card-subtitle>Expansion panel <code class=""><a href="https://material.angular.io/components/expansion/overview">Official Component</a></code></mat-card-subtitle>
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title> Personal data </mat-panel-title>
+                    <mat-panel-description> Type your name and age </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-form-field>
+                    <input matInput placeholder="First name"> </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Age"> </mat-form-field>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title> Self aware panel </mat-panel-title>
+                    <mat-panel-description> Currently I am {{panelOpenState ? 'open' : 'closed'}} </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>I'm visible because I am open</p>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card-content>
+</mat-card>
+-->
+<!-- ============================================================== -->
+<!-- As an Accordion -->
+<!-- ============================================================== -->
+
+
+<mat-card>
+    <mat-card-content>
+    <mat-card-title></mat-card-title>
+    <mat-chip-list class="mat-chip-list-stacked" *ngIf="sp==true">
+        <mat-chip id="sp" *ngFor="let aColor of availableColors"
+        (focus)="color = aColor.color" color="{{aColor.color}}" selected="true">
+    {{aColor.name}}
+    </mat-chip>
+    </mat-chip-list>
+    <mat-card-subtitle>Modifier Annonce</mat-card-subtitle>
+    
+    <mat-accordion class="example-headers-align">
+        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title> ANNONCE </mat-panel-title>
+                <mat-panel-description> Modifier l'annonce
+                    <mat-icon>account_circle</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            
+            <mat-form-field>
+                <input matInput placeholder="Titre" name="titre"  [(ngModel)]="a.titre"  required>
+     
+     </mat-form-field>
+    
+                <mat-form-field>
+                    <input matInput placeholder="Destination" name="destinantion" [(ngModel)]="a.destination"  required>
+         </mat-form-field>
+    
+                    <mat-form-field>
+                        <input type="date" matInput placeholder="Date Debut" name="date_debut" [(ngModel)]="a.date_debut"  required>
+         </mat-form-field>
+    
+                    <mat-form-field>
+                         <input type="date" matInput placeholder="Date Fin"[(ngModel)]="a.date_fin" name="date_fin" required>
+             </mat-form-field>
+    
+                         <mat-form-field>
+                            <input matInput placeholder="description" [(ngModel)]="a.description" name="description"required> 
+            </mat-form-field>
+    
+                            <mat-form-field>
+                                <input matInput placeholder="Prix"[(ngModel)]="a.prix" name="prix" required> 
+            </mat-form-field>
+                                
+            
+            <mat-action-row>
+                <button mat-button color="primary" (click)="nextStep()">Suivant</button>
+            </mat-action-row>
+            <input type="file" (change)="readUrl($event)" accept="image/*" id="file" name="file" class="form-control" >
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+            
+            <mat-expansion-panel-header>
+                <mat-panel-title> Programme </mat-panel-title>
+                
+                <mat-panel-description> Modifier le programme
+                    <mat-icon>map</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div *ngFor="let contenu of dataarray;let i=index;">
+            <mat-form-field>
+                <input matInput placeholder="Titre" name="titre{{i}}" [(ngModel)]=contenu.titre required> </mat-form-field>
+                <mat-form-field> <input matInput placeholder="Jour" name="jour{{i}}" [(ngModel)]=contenu.jour required> </mat-form-field>
+                <mat-form-field>  <input matInput placeholder="Destination"  name="destinantion{{i}}" [(ngModel)]=contenu.destination required> </mat-form-field>
+                <mat-form-field> <input matInput placeholder="Description"  name="description{{i}}" [(ngModel)]=contenu.description required> </mat-form-field>
+                 
+               <input type="file" (change)="readUrl2($event)" accept="image/*"  id="file2" name="file" class="form-control" >
+       
+                <div style="margin-top:30px;margin-bottom:30px">
+                    <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
+                    </div>
+                </div>
+                <button  (click)="addForm()" mat-button color="primary">Modifier Programme </button>  
+                
+              <mat-action-row>
+                
+                <button mat-button color="warn" (click)="prevStep()">Précédent</button>
+                <button mat-button color="primary" id="stepNext" (click)="nextStep()">Suivant</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title> Forfait</mat-panel-title>
+                <mat-panel-description> Modifier Forfait
+                    <mat-icon>date_range</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <textarea matInput placeholder="Inclut" [(ngModel)]=f.inclut name="inclut" required></textarea>
+                  </mat-form-field>
+            </mat-form-field>
+             
+            <mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <textarea matInput placeholder="NonInclut" [(ngModel)]=f.noninclut name="nonIn"required></textarea>
+                  </mat-form-field>
+            </mat-form-field>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Annuler</button>
+                <button mat-button color="primary" (click)="update_Annonce()" id="endF" type="submit">Modifier </button>
+               
+            </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion>
+    </mat-card-content>
+    </mat-card>
+     
